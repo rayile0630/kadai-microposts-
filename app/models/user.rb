@@ -27,7 +27,9 @@ class User < ApplicationRecord
   end
   
   def like(micropost)
-     favorites.find_or_create_by(micropost_id: micropost.id)
+     unless self == micropost
+       favorites.find_or_create_by(micropost_id: micropost.id)
+     end
   end
   
   def unlike(micropost)
