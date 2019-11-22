@@ -16,6 +16,15 @@ default: &default
   username: root
   password:
   socket: /var/lib/mysql/mysql.sock
+  
+production:
+ <<: *default
+ adapter: postgresql
+ encoding: unicode
+ pool: 5
+ database: microposts_production
+ username: microposts
+ password: <%= ENV['MICROPOSTS_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
